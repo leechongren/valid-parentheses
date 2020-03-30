@@ -1,5 +1,8 @@
 const validparentheses = input => {
-  return 1;
+  if (input === ")" || input === "(") {
+    return "Invalid";
+  }
+  return "Valid";
 };
 
 module.exports = validparentheses;
