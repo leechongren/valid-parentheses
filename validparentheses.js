@@ -1,24 +1,42 @@
+class Stack {
+  constructor(arr) {
+    this._arr = arr;
+  }
+
+  push(item) {
+    this._arr[this._arr.length] = item;
+    return this._arr;
+  }
+
+  pop() {
+    return this._arr.pop();
+  }
+
+  peek() {
+    return this._arr[this._arr.length - 1];
+  }
+}
+
 const validparentheses = input => {
   const splitInput = input.split("");
-  let countOfBracketsSet = 0;
-  if (splitInput[0] === ")") {
-    return "Invalid";
-  } else if (splitInput[splitInput.length - 1] === "(") {
-    return "Invalid";
-  }
+  const parenthesesStack = new Stack([]);
+  let validity = true;
 
   splitInput.map(bracket => {
     if (bracket === "(") {
-      countOfBracketsSet++;
+      parenthesesStack.push(bracket);
     } else if (bracket === ")") {
-      countOfBracketsSet--;
+      if (parenthesesStack._arr.length === 0) {
+        validity = false;
+      }
+      parenthesesStack.pop();
     }
   });
 
-  if (countOfBracketsSet !== 0) {
-    return "Invalid";
-  } else {
+  if (parenthesesStack._arr.length === 0 && validity) {
     return "Valid";
+  } else {
+    return "Invalid";
   }
 };
 
