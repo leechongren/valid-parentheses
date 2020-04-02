@@ -34,9 +34,9 @@ const validparentheses = input => {
   });
 
   if (parenthesesStack._arr.length === 0 && validity) {
-    return "Valid";
+    return true;
   } else {
-    return "Invalid";
+    return false;
   }
 };
 

@@ -3,37 +3,37 @@ const validparentheses = require("./validparentheses");
 describe("validparentheses", () => {
   describe("Invalid Cases", () => {
     it("should return invalid if input is ')'", () => {
-      expect(validparentheses(")")).toEqual("Invalid");
+      expect(validparentheses(")")).toBeFalsy();
     });
 
     it("should return invalid if input is '('", () => {
-      expect(validparentheses("(")).toEqual("Invalid");
+      expect(validparentheses("(")).toBeFalsy();
     });
 
     it("should return invalid if input starts with a ')'", () => {
-      expect(validparentheses(")(")).toEqual("Invalid");
-      expect(validparentheses(")()()")).toEqual("Invalid");
+      expect(validparentheses(")(")).toBeFalsy();
+      expect(validparentheses(")()()")).toBeFalsy();
     });
 
     it("should return invalid if input ends with a '('", () => {
-      expect(validparentheses("()(")).toEqual("Invalid");
+      expect(validparentheses("()(")).toBeFalsy();
     });
 
     it("should return invalid if input is '())'", () => {
-      expect(validparentheses("())")).toEqual("Invalid");
+      expect(validparentheses("())")).toBeFalsy();
     });
 
     it("should return invalid if input is ')(()))'", () => {
-      expect(validparentheses(")(()))")).toEqual("Invalid");
+      expect(validparentheses(")(()))")).toBeFalsy();
     });
   });
   describe("Valid Cases", () => {
     it("should return valid if input is '(())'", () => {
-      expect(validparentheses("(())")).toEqual("Valid");
+      expect(validparentheses("(())")).toBeTruthy();
     });
 
     it("should return valid if input is '(())((()())())'", () => {
-      expect(validparentheses("(())((()())())")).toEqual("Valid");
+      expect(validparentheses("(())((()())())")).toBeTruthy();
     });
   });
 });
